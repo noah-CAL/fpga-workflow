@@ -11,7 +11,7 @@ VIVADO_OPTS = -mode batch -log $(VIVADO_LOG) -journal $(VIVADO_JOU)
 ###################
 # Program Outputs #
 ###################
-BITSTREAM   = design.bit
+BITSTREAM   = output/design.bit
 CHECKPOINTS = output/post_route.dcp \
 							output/post_place.dcp
 
@@ -26,6 +26,8 @@ write_bitstream: $(CONSTRS) $(SRCS) $(CHECKPOINTS)
 
 program: $(BITSTREAM)
 	vivado $(VIVADO_OPTS) -source scripts/program.tcl
+
+$(BITSTREAM): write_bitstream
 
 clean:
 	rm *.log *.jou
