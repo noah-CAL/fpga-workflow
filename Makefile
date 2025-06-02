@@ -33,9 +33,9 @@ program:
 $(CONSTRS) $(SRCS) $(CHECKPOINTS) $(BITSTREAM): write_bitstream
 
 clean:
-	rm *.log *.jou
+	rm -f *.log *.jou
 
 clean_all: clean
-	rm -r output/
+	rm -rf output/*
 
 .PHONY: default check_connectivity write_bitstream program clean clean_all
