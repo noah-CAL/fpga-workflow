@@ -4,8 +4,8 @@ default:
 ################
 #    Vivado    #
 ################
-VIVADO_LOG  = vivado.log
-VIVADO_JOU  = vivado.jou
+VIVADO_LOG  = logging/vivado.log
+VIVADO_JOU  = logging/vivado.jou
 VIVADO_OPTS = -mode batch -log $(VIVADO_LOG) -journal $(VIVADO_JOU)
 
 ###################
@@ -33,9 +33,9 @@ program:
 $(CONSTRS) $(SRCS) $(CHECKPOINTS) $(BITSTREAM): write_bitstream
 
 clean:
-	rm -f *.log *.jou
+	rm -f clockInfo.txt logging/*.log logging/*.jou
 
 clean_all: clean
-	rm -rf output/*
+	rm -f output/*
 
 .PHONY: default check_connectivity write_bitstream program clean clean_all
