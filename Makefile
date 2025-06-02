@@ -1,5 +1,5 @@
 default:
-	@echo "USAGE: make [write_bitstream, program, clean, clean_all]"
+	@echo "USAGE: make [write_bitstream, program, check_connectivity, clean, clean_all]"
 
 ################
 #    Vivado    #
@@ -21,6 +21,9 @@ CHECKPOINTS = output/post_route.dcp \
 CNSTRS      = sources/basys3_main.xdc
 SRCS        = sources/ztop.v
 
+check_connectivity:
+	vivado $(VIVADO_OPTS) -source scripts/check_connectivity.tcl
+
 write_bitstream:
 	vivado $(VIVADO_OPTS) -source scripts/write_bitstream.tcl
 
@@ -35,4 +38,4 @@ clean:
 clean_all: clean
 	rm -r output/
 
-.PHONY: default write_bitstream program clean clean_all
+.PHONY: default check_connectivity write_bitstream program clean clean_all

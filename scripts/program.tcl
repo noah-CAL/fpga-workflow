@@ -1,3 +1,8 @@
+# program.tcl
+# 
+# Opens the HW manager and programs the connected 
+# device with the bitstream located
+# at ./output/design.bit (generated with write_bitstream.tcl)
 set bitstream ./output/design.bit
 
 open_hw_manager
