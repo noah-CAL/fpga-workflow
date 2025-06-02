@@ -21,13 +21,13 @@ CHECKPOINTS = output/post_route.dcp \
 CNSTRS      = sources/basys3_main.xdc
 SRCS        = sources/ztop.v
 
-write_bitstream: $(CONSTRS) $(SRCS) $(CHECKPOINTS)
+write_bitstream:
 	vivado $(VIVADO_OPTS) -source scripts/write_bitstream.tcl
 
-program: $(BITSTREAM)
+program:
 	vivado $(VIVADO_OPTS) -source scripts/program.tcl
 
-$(BITSTREAM): write_bitstream
+$(CONSTRS) $(SRCS) $(CHECKPOINTS) $(BITSTREAM): write_bitstream
 
 clean:
 	rm *.log *.jou
